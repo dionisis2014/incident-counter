@@ -5,9 +5,10 @@ interface Props {
 	link?: string;
 }
 
-const { link = "#" } = Astro.props;
+const { link } = Astro.props;
 ---
 
-<a href={link} class="link">
+<a class="link" href={link}>
 	<slot />
 </a>
+

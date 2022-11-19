@@ -1,0 +1,7 @@
+.spiner {
+	@apply animate-spin;
+
+	path {
+		@apply dark:fill-neutral-50 fill-neutral-900;
+	}
+}
