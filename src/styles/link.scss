@@ -1,0 +1,20 @@
+.link {
+	@apply flex flex-row justify-center items-center w-full h-full;
+
+	text-decoration: none;
+
+	svg {
+		width: 90%;
+		height: 90%;
+
+		path {
+			@apply dark:fill-neutral-900 fill-neutral-50;
+
+			@apply transition-colors duration-100 ease-linear;
+		}
+	}
+
+	&:hover svg path {
+		@apply dark:fill-neutral-50 fill-neutral-900;
+	}
+}

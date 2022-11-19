@@ -1,0 +1,25 @@
+---
+interface Props {
+	title: string;
+	icon?: string;
+}
+
+const { title, icon = "/favicon.svg" } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html class="h-full">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="author" content="Dionisis Toulatos" />
+		<meta name="description" content="Nbee-IOT Dashboard" />
+		<meta name="generator" content={Astro.generator} />
+		<meta name="color-scheme" content="light dark" />
+		<meta name="viewport" content="width=device-width" />
+		<title>{title}</title>
+		<link rel="icon" href={icon} />
+	</head>
+	<body class="flex flex-col min-h-screen">
+		<slot />
+	</body>
+</html>

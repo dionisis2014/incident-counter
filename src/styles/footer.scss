@@ -1,0 +1,17 @@
+.footer {
+	@apply flex flex-row justify-start items-center;
+	@apply w-full h-8;
+	@apply bg-red-500;
+
+	li {
+		@apply h-full pt-0.5 pb-0.5 pl-2 pr-2;
+
+		&:first-child {
+			@apply ml-4;
+		}
+
+		&:last-child {
+			@apply ml-auto mr-4;
+		}
+	}
+}
