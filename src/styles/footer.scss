@@ -1,7 +1,7 @@
 .footer {
 	@apply flex flex-row justify-start items-center;
 	@apply w-full h-8;
-	@apply bg-red-500;
+	@apply dark:bg-neutral-200 bg-neutral-800;
 
 	li {
 		@apply h-full pt-0.5 pb-0.5 pl-2 pr-2;
