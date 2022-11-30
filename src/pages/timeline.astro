@@ -18,13 +18,51 @@ import "../styles/timeline.scss";
 				if (data.incidents.length == 0) {
 					table.textContent = "Such Empty. Much Wow.";
 				} else {
-					const list = document.createElement("ul");
+					const list = document.createElement("table");
 					list.className = "timeline";
+
+					// const span = document.createElement("span");
+					// span.textContent = "World events since timeline split:";
+					// list.appendChild(span);
+
+					var row = document.createElement("tr");
+					var col = document.createElement("td");
+					col.innerHTML = "Date";
+					row.appendChild(col);
+					col = document.createElement("td");
+					col.innerHTML = "Handler";
+					row.appendChild(col);
+					col = document.createElement("td");
+					col.innerHTML = "Count";
+					row.appendChild(col);
+					col = document.createElement("td");
+					col.innerHTML = "Severity";
+					row.appendChild(col);
+
+						list.appendChild(row);
+
 					for (var i = 0; i < data.incidents.length; i++) {
-						var item = document.createElement("li");
+						var row = document.createElement("tr");
+
 						const date = new Date(data.incidents[i].time * 1000);
-						item.innerHTML = date.toLocaleDateString(navigator.languages[0], { year: "2-digit", month: "2-digit", day: "2-digit" }) + " - " + data["id-map"][data.incidents[i].id - 1];
-						list.appendChild(item);
+						const id = data["id-map"][data.incidents[i].id - 1];
+						const count = data.incidents[i].count;
+						const severity  = data.incidents[i].severity;
+
+						var col = document.createElement("td");
+						col.innerHTML = date.toLocaleDateString(navigator.languages[0], { year: "2-digit", month: "2-digit", day: "2-digit" });
+						row.appendChild(col);
+						col = document.createElement("td");
+						col.innerHTML = id;
+						row.appendChild(col);
+						col = document.createElement("td");
+						col.innerHTML = count;
+						row.appendChild(col);
+						col = document.createElement("td");
+						col.innerHTML = severity.toUpperCase();
+						row.appendChild(col);
+
+						list.appendChild(row);
 					}
 					const body = document.getElementById("body");
 					if (body !== null)
@@ -38,7 +76,7 @@ import "../styles/timeline.scss";
 		});
 </script>
 
-<Header title="Days since last INCIDENT">
+<Header title="World events since timeline split">
 	<body id="body">
 		<div class="counter" id="table">
 			<svg class="spiner w-1/2 h-1/2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">

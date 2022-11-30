@@ -5,11 +5,23 @@
 	font-size: 4rem;
 
 	@apply font-bold;
-	@apply flex flex-col justify-center items-center w-fit h-full m-auto pb-8;
+	@apply w-fit h-full m-auto mb-16 mt-8;
 
-	li {
-		@apply border-b w-full p-6;
-		@apply flex flex-row justify-center items-center;
+	tr {
+		@apply border-b;
+
+		&:first-child {
+			font-size: 6rem;
+		}
+
+		&:last-child {
+			@apply border-none;
+		}
+	}
+
+	td {
+		@apply border-r p-6;
+		@apply text-center;
 
 		&:last-child {
 			@apply border-none;

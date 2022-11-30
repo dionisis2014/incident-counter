@@ -8,12 +8,14 @@
 		{
 			"id": 1,
 			"time": 1667804400,
-			"count": 1
+			"count": 1,
+			"severity": "low"
 		},
 		{
 			"id": 1,
 			"time": 1669186800,
-			"count": 1
+			"count": 1,
+			"severity": "low"
 		}
 	]
 }
