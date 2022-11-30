@@ -5,5 +5,5 @@
 	font-size: 16rem;
 
 	@apply font-bold;
-	@apply flex flex-row justify-center items-center;
+	@apply flex flex-row justify-center items-center w-full h-screen pb-8;
 }

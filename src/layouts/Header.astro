@@ -1,14 +1,16 @@
 ---
+import "../styles/site.scss";
+
 interface Props {
 	title: string;
 	icon?: string;
 }
 
-const { title, icon = "/favicon.svg" } = Astro.props;
+const { title, icon = "/incident-counter/favicon.svg" } = Astro.props;
 ---
 
 <!DOCTYPE html>
-<html class="h-full">
+<html>
 	<head>
 		<meta charset="utf-8" />
 		<meta name="author" content="Dionisis Toulatos" />
@@ -19,7 +21,5 @@ const { title, icon = "/favicon.svg" } = Astro.props;
 		<title>{title}</title>
 		<link rel="icon" href={icon} />
 	</head>
-	<body class="flex flex-col min-h-screen">
-		<slot />
-	</body>
+	<slot />
 </html>

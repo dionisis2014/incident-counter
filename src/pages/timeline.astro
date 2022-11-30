@@ -4,6 +4,7 @@ import Header from "../layouts/Header.astro";
 
 import "../styles/counter.scss";
 import "../styles/spinner.scss";
+import "../styles/timeline.scss";
 ---
 
 <script>
@@ -12,20 +13,23 @@ import "../styles/spinner.scss";
 			return response.json();
 		})
 		.then(function (data) {
-			const counter = document.getElementsByClassName("counter")[0];
-			if (counter !== null) {
+			const table = document.getElementById("table");
+			if (table !== null) {
 				if (data.incidents.length == 0) {
-					counter.textContent = "∞";
+					table.textContent = "Such Empty. Much Wow.";
 				} else {
-					const incident_date = new Date(
-						data.incidents[data.incidents.length - 1].time * 1000
-					);
-					const current_date = new Date();
-					const days = Math.floor(
-						(current_date.getTime() - incident_date.getTime()) /
-							(1000 * 3600 * 24)
-					);
-					//counter.textContent = days.toString();
+					const list = document.createElement("ul");
+					list.className = "timeline";
+					for (var i = 0; i < data.incidents.length; i++) {
+						var item = document.createElement("li");
+						const date = new Date(data.incidents[i].time * 1000);
+						item.innerHTML = date.toLocaleDateString(navigator.languages[0], { year: "2-digit", month: "2-digit", day: "2-digit" }) + " - " + data["id-map"][data.incidents[i].id - 1];
+						list.appendChild(item);
+					}
+					const body = document.getElementById("body");
+					if (body !== null)
+						body.replaceChild(list, table);
+					//table.className += "flex flex-col justify-start items-center";
 				}
 			}
 		})
@@ -35,9 +39,9 @@ import "../styles/spinner.scss";
 </script>
 
 <Header title="Days since last INCIDENT">
-	<body>
-		<div class="counter">
-			<svg class="spiner h-1/4 aspect-square" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+	<body id="body">
+		<div class="counter" id="table">
+			<svg class="spiner w-1/2 h-1/2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
 				<!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. -->
 				<path d="M304 48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zm0 416c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM48 304c26.5 0 48-21.5 48-48s-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48zm464-48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM142.9 437c18.7-18.7 18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zm0-294.2c18.7-18.7 18.7-49.1 0-67.9S93.7 56.2 75 75s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zM369.1 437c18.7 18.7 49.1 18.7 67.9 0s18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9z"></path>
 			</svg>

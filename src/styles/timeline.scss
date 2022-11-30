@@ -1,0 +1,18 @@
+.timeline {
+	@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Roboto:wght@400;700&display=swap');
+
+	font-family: 'Roboto', sans-serif;
+	font-size: 4rem;
+
+	@apply font-bold;
+	@apply flex flex-col justify-center items-center w-fit h-full m-auto pb-8;
+
+	li {
+		@apply border-b w-full p-6;
+		@apply flex flex-row justify-center items-center;
+
+		&:last-child {
+			@apply border-none;
+		}
+	}
+}

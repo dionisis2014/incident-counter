@@ -1,0 +1,19 @@
+{
+	"version": "1.0",
+	"id-map": [
+		"S.M.E.G.",
+		"Big Fard"
+	],
+	"incidents": [
+		{
+			"id": 1,
+			"time": 1667804400,
+			"count": 1
+		},
+		{
+			"id": 1,
+			"time": 1669186800,
+			"count": 1
+		}
+	]
+}

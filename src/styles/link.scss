@@ -1,5 +1,6 @@
 .link {
 	@apply flex flex-row justify-center items-center w-full h-full;
+	@apply cursor-pointer;
 
 	text-decoration: none;
 

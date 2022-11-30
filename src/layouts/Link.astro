@@ -3,12 +3,13 @@ import "../styles/link.scss";
 
 interface Props {
 	link?: string;
+	id?: string
 }
 
-const { link } = Astro.props;
+const { link, id } = Astro.props;
 ---
 
-<a class="link" href={link}>
+<a class="link" href={link} id={id}>
 	<slot />
 </a>
 
